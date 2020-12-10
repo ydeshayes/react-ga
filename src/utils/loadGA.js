@@ -13,7 +13,7 @@ export default function (options) {
 
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/
   /* eslint-disable */
-  (function (i, s, o, g, r, a, m) {
+  (function (i, s, o, g, r, n, a, m) {
     i['GoogleAnalyticsObject'] = r;
     (i[r] =
       i[r] ||
@@ -23,9 +23,11 @@ export default function (options) {
       (i[r].l = 1 * new Date());
     (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
     a.async = 1;
+    if(n)
+      a.setAttribute('nonce', n);
     a.src = g;
     a.onerror = onerror;
     m.parentNode.insertBefore(a, m);
-  })(window, document, 'script', gaAddress, 'ga');
+  })(window, document, 'script', gaAddress, 'ga', options.nonce);
   /* eslint-enable */
 }
